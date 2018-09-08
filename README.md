@@ -3,5 +3,6 @@
 
 使用介绍:
 
-后台配置好环境可以直接运行
-前台下载后 npm install +npm start运行
+1.后台配置好环境可以直接运行
+
+2.前台下载后 npm install +npm start运行
