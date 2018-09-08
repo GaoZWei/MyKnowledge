@@ -1,0 +1,251 @@
+@charset "utf-8";
+/* CSS Document */
+* {
+	margin: 0;
+	padding: 0;
+	-webkit-text-size-adjust: none;
+}
+
+body {
+	background: #fff;
+	font-size: 12px;
+	color: #555;
+	font-family: Tahoma, Geneva, sans-serif;
+}
+
+a {
+	color: #555;
+	text-decoration: none;
+}
+
+a:hover {
+	color: #c00;
+	text-decoration: underline;
+}
+
+img {
+	border: none;
+}
+
+li {
+	list-style: none;
+}
+
+.clearfix:after {
+	visibility: hidden;
+	display: block;
+	font-size: 0;
+	content: " ";
+	clear: both;
+	height: 0;
+}
+
+* html .clearfix {
+	zoom: 1;
+} /* IE6 */
+*:first-child+html .clearfix {
+	zoom: 1;
+} /* IE7 */
+
+/*tab*/
+.tab {
+	line-height: 56px;
+	font-size: 14px;
+}
+
+.tab a {
+	color: #07c;
+}
+
+.tab a:hover {
+	color: #c00;
+}
+
+.tab a.cur {
+	font-weight: bold;
+}
+
+/*商品详细页*/
+/*iteminfo*/
+.iteminfo {
+	
+}
+
+.iteminfo_tit {
+	color: #333;
+	font-size: 22px;
+	font-family: "微软雅黑", Arial, Helvetica, sans-serif;
+	border-bottom: 1px solid #e3e3e3;
+	font-weight: normal;
+	padding-bottom: 12px;
+	line-height: 32px;
+}
+
+.iteminfo_parameter {
+	padding: 8px 0;
+	padding-left: 70px;
+}
+
+.iteminfo_parameter_default {
+	color: #888;
+}
+
+.iteminfo_parameter dt {
+	margin-left: -70px;
+	float: left;
+	display: inline;
+	width: 60px;
+	white-space: nowrap;
+	text-align: right;
+	color: #888;
+}
+
+.iteminfo_mktprice {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	text-decoration: line-through;
+}
+
+.lh32 {
+	line-height: 32px;
+}
+
+.iteminfo_price {
+	color: #c00;
+	font-size: 14px;
+	font-family: Arial, Helvetica, sans-serif;
+	vertical-align: middle;
+}
+
+.sys_item_price {
+	color: #c00;
+	font-size: 22px;
+	vertical-align: middle;
+}
+
+.sys_item_other {
+	color: #888;
+	font-size: 18px;
+	vertical-align: middle;
+}
+
+.iteminfo_buying {
+	background: #f7f7f7;
+	padding: 12px 0;
+}
+
+/*规格*/
+.sys_item_spec dl.iteminfo_parameter {
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.sys_item_spec dl.iteminfo_parameter dt {
+	line-height: 32px;
+}
+
+/*一下正对图片*/
+.sys_spec_img {
+	
+}
+
+.sys_spec_img li {
+	float: left;
+	height: 54px;
+	position: relative;
+	margin: 2px 6px 2px 0;
+}
+
+.sys_spec_img li a {
+	height: 50px;
+	width: 50px;
+	padding: 1px;
+	border: 1px solid #ccc;
+	float: left;
+	background: #fff;
+	display: inline-block;
+	outline: none;
+}
+
+.sys_spec_img li a img {
+	width: 50px;
+	height: 50px;
+	display: block;
+}
+
+.sys_spec_img li a:hover {
+	border: 2px solid #e4393c;
+	padding: 0;
+	text-decoration: none;
+}
+
+.sys_spec_img li i {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	font-size: 0;
+	line-height: 0;
+	right: 2px;
+	bottom: 2px;
+	background: url(img/sys_item_selected.gif) no-repeat right bottom;
+	z-index: 99;
+	display: none;
+}
+
+.sys_spec_img li.selected a {
+	border: 2px solid #e4393c;
+	padding: 0;
+}
+
+.sys_spec_img li.selected i {
+	display: block;
+}
+
+.sys_spec_text {
+	
+}
+
+.sys_spec_text li {
+	float: left;
+	height: 28px;
+	position: relative;
+	margin: 2px 6px 2px 0;
+	outline: none;
+}
+
+.sys_spec_text li a {
+	height: 24px;
+	padding: 1px 6px;
+	border: 1px solid #ccc;
+	background: #fff;
+	display: inline-block;
+	line-height: 24px;
+}
+
+.sys_spec_text li a:hover {
+	border: 2px solid #e4393c;
+	padding: 0 5px;
+	text-decoration: none;
+}
+
+.sys_spec_text li i {
+	position: absolute;
+	width: 10px;
+	height: 10px;
+	font-size: 0;
+	line-height: 0;
+	right: 2px;
+	bottom: 2px;
+	background: url(img/sys_item_selected.gif) no-repeat right bottom;
+	z-index: 99;
+	display: none;
+}
+
+.sys_spec_text li.selected a {
+	border: 2px solid #e4393c;
+	padding: 0 5px;
+}
+
+.sys_spec_text li.selected i {
+	display: block;
+}

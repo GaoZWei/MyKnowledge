@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wzb.ssm.mapper.AdminMapperCustom">
+	<!-- 登录的管理员查询 -->
+	<!-- paramterType传入包装对象（包装了查询条件） -->
+	<select id="findLoginAdmin" parameterType="cn.wzb.ssm.po.Admin"
+		resultType="cn.wzb.ssm.po.Admin">
+		select id,account,password from admin
+		where
+		account=#{account} and
+		password=#{password}
+	</select>
+
+</mapper>

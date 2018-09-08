@@ -1,0 +1,37 @@
+/*用了全局覆盖*/
+/*:global(.ant-carousel .slick-slider) {*/
+  /*text-align: center;*/
+  /*margin-left: 200px;*/
+  /*height: 160px!important;*/
+  /*line-height: 160px!important;*/
+  /*background: #364d79;*/
+  /*overflow: hidden;*/
+ /*}*/
+/*:global(.ant-carousel .slick-slider h3) {*/
+   /*color: darkslategray;*/
+ /*}*/
+
+
+/*.ant-carousel .slick-slider {*/
+  /*text-align: center;*/
+  /*height: 160px!important;*/
+  /*line-height: 160px!important;*/
+  /*background: #364d79;*/
+  /*overflow: hidden;*/
+/*}*/
+/*.ant-carousel .slick-slider h3 {*/
+  /*color: darkslategray;*/
+/*}*/
+/*覆盖默认可以自定义添加样式,防止污染,css:module全局默认样式*/
+.lunbo{
+  margin-left: 200px;
+  text-align: center;
+  height: 200px;
+  line-height: 160px;
+  /*background: #364d79;*/
+  overflow: hidden;
+}
+.lunbo h3{
+  color: darkslategray;
+
+}

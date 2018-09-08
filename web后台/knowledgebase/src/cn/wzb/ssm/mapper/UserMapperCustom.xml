@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wzb.ssm.mapper.UserMapperCustom">
+	<!-- 所有用户查询 -->
+	<select id="findUserList" parameterType="cn.wzb.ssm.po.UserQueryVo"
+		resultType="cn.wzb.ssm.po.UserCustom">
+		select * from user;
+		<where>
+			<include refid="query_users_where"></include>
+		</where>
+	</select>
+	<select id="selectUser" parameterType="java.lang.Long"
+	     resultType="cn.wzb.ssm.po.UserCustom">
+	     select * from user where username like '%${_parameter}%'
+	</select>
+	<!-- 定义用户查询的sql片段 -->
+	<sql id="query_users_where">
+		<if test="userCustom!=null">
+			<if test="userCustom.username!=null and userCustom.username!=''">
+				user.account like '%${userCustom.account}%'
+			</if>
+		</if>
+	</sql>
+
+
+	<select id="findLoginUser" parameterType="cn.wzb.ssm.po.User"
+		resultType="cn.wzb.ssm.po.User">
+		select id,account,password,username,age,telephone,ident from
+		user
+		where account=#{account} and
+		password=#{password}
+	</select>
+
+	<select id="findRegisterUser" parameterType="cn.wzb.ssm.po.User"
+		resultType="cn.wzb.ssm.po.User">
+		select account from user where account=#{account}
+	</select>
+
+	<select id="isdeleteUser" parameterType="cn.wzb.ssm.po.User"
+		resultType="cn.wzb.ssm.po.User">
+		update user set ident=0 where id=#{id}
+	</select>
+
+	<select id="nodeleteUser" parameterType="cn.wzb.ssm.po.User"
+		resultType="cn.wzb.ssm.po.User">
+		update user set ident=1 where id=#{id}
+	</select>
+</mapper>

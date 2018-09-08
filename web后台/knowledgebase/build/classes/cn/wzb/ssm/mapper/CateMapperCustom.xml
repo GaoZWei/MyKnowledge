@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wzb.ssm.mapper.CateMapperCustom">
+
+	<select id="findCateList" parameterType="cn.wzb.ssm.po.Cate"
+		resultType="cn.wzb.ssm.po.Cate">
+		select catename,id from cate where isdelete=0
+	</select>
+	
+	<select id="findCateName" parameterType="cn.wzb.ssm.po.Cate"
+		resultType="cn.wzb.ssm.po.Cate">
+		select * from cate where catename=#{catename} and isdelete=0
+	</select>
+	
+	<select id="delCate" parameterType="cn.wzb.ssm.po.Cate"
+		resultType="cn.wzb.ssm.po.Cate">
+		update cate set isdelete=1 where id = #{id}
+	</select>
+
+</mapper>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wzb.ssm.mapper.KnowledgeMapperCustom">
+
+    <select id="findUserKnowledgeList" parameterType="int"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select 
+		knowledge.id,knowledge.title,knowledge.knowledgecontent,tag.tagname,cate.catename,knowledge.count,knowledge.time
+		from knowledge 
+		join cate on cate.id = knowledge.cateid
+		join tags on knowledge.id = tags.knowledgeid
+		join tag on tag.id = tags.tagid
+		where userid=#{userid} 
+		order by knowledge.id 
+	</select>
+	
+	<select id="findShareKnowledgeByUserId" parameterType="int"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select
+		knowledge.id,knowledge.title,knowledge.knowledgecontent,tag.tagname,cate.catename
+		from
+		knowledge
+		join cate on cate.id = knowledge.cateid
+		join tags on knowledge.id = tags.knowledgeid
+		join tag on tag.id = tags.tagid
+		where userid = #{userid} AND sfshare = 1
+		order by knowledge.id  
+	</select>
+	
+	<select id="findOnlineKnowledgeList" parameterType="cn.wzb.ssm.po.KnowledgeQueryVo"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select
+		id,title,userid,tagid,cateid
+		from
+		knowledge
+		order by id  
+	</select>
+	
+	<select id="findHotKnowledgeList" parameterType="cn.wzb.ssm.po.KnowledgeQueryVo"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select
+		id,title,knowledgecontent,userid,count
+		from
+		knowledge
+		where sfshare=1 order by id  
+	</select>
+	
+	<select id="findSameTypeKnowledgeList" parameterType="cn.wzb.ssm.po.KnowledgeQueryVo"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select
+		knowledge.id,knowledge.title,knowledge.userid,knowledge.tagid,knowledge.cateid,cate.catename
+		from
+		knowledge join cate on cate.id = knowledge.cateid
+		where cate.catename=#{catename} order by id 
+	</select>
+	
+	<select id="findSameTagKnowledgeList" parameterType="cn.wzb.ssm.po.KnowledgeQueryVo"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select
+		knowledge.id,knowledge.title,knowledge.userid,knowledge.tagid,knowledge.cateid,tag.tagname
+		from
+		knowledge join tag on tag.id = knowledge.tagid
+		where tag.tagname=#{tagname} order by id 
+	</select>
+	
+	<select id="findKnowledgeinf" parameterType="cn.wzb.ssm.po.KnowledgeQueryVo"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select 
+		knowledge.id,knowledge.title,knowledge.knowledgecontent,user.username,tag.tagname,cate.catename
+		from 
+		knowledge join user on user.id = knowledge.userid join tag on tag.id = knowledge.tagid join cate on cate.id = knowledge.cateid
+		where knowledge.id=#{id} order by id  
+	</select>
+	
+	<!-- 通过查找输入进行模糊查询 -->
+	<select id="findKnowledgeSelByName" parameterType="cn.wzb.ssm.po.KnowledgeQueryVo"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select knowledge.id,knowledge.title,knowledge.time,cate.catename,tag.tagname
+		from knowledge 
+		join cate on cate.id = knowledge.cateid
+		join tags on knowledge.id = tags.knowledgeid
+		join tag on tag.id = tags.tagid
+	    where title like CONCAT('%', #{title}, '%')
+	</select>
+	
+	<delete id="deleteByPrimaryKey" parameterType="int">
+		delete from knowledge where id=#{id}
+	</delete>
+	
+		<select id="isdeleteKnowledge" parameterType="int"
+		resultType="cn.wzb.ssm.po.Knowledge">
+		update knowledge set sfshare=0 where id=#{id}
+	</select>
+
+	<select id="nodeleteKnowledge" parameterType="int"
+		resultType="cn.wzb.ssm.po.Knowledge">
+		update knowledge set sfshare=1 where id=#{id}
+	</select>
+	
+	 <select id="findKnowledgecatelist" parameterType="int"
+		resultType="cn.wzb.ssm.po.Cate">
+		select 
+		cate.id,cate.catename,cate.isdelete
+		from cate 
+		where isdelete=0  order by cate.id
+	</select>
+	
+	<select id="getEntity" parameterType="int"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select * from knowledge where id=#{id}
+	</select>
+	
+	<select id="updateCount" parameterType="cn.wzb.ssm.po.KnowledgeCustom">
+		update knowledge set count = #{count} where id = #{id}
+	</select>
+	
+	<select id="findTaglist" parameterType="int" 
+	resultType="cn.wzb.ssm.po.CollectCustom" >
+		select tag.tagname
+		from knowledge
+		join tags on knowledge.id = tags.knowledgeid
+		join tag on tag.id = tags.tagid
+		where id = #{id}
+	</select>
+	
+	<select id="findEntityByName" parameterType="cn.wzb.ssm.po.KnowledgeQueryVo"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select * from knowledge where title=#{title}
+	</select>
+	
+	
+	<!-- <select id="getEntity" parameterType="id"
+		resultType="cn.wzb.ssm.po.KnowledgeCustom">
+		select * from knowledge where id=#{id}
+	</select> -->
+</mapper>

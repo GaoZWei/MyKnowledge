@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.wzb.ssm.mapper.CollectionMapperCustom">
+
+	<select id="findKnowledgeIdByUserId" parameterType="cn.wzb.ssm.po.User"
+		resultType="cn.wzb.ssm.po.CollectCustom">
+		select
+		collection.id,collection.userid,collection.count,knowledge.title,knowledge.knowledgecontent,knowledge.time,tag.tagname,cate.catename
+		from collection
+		join user on user.id=collection.userid
+		join knowledge on knowledge.id=collection.knowledgeid
+		join cate on knowledge.cateid=cate.id
+		join tags on knowledge.id = tags.knowledgeid
+		join tag on tag.id = tags.tagid
+		where user.id=#{id}
+		order by collection.id 
+	</select>
+	<select id="getEntity" parameterType="int"
+		resultType="cn.wzb.ssm.po.CollectCustom">
+		select * from collection where id=#{id}
+	</select>
+</mapper>
